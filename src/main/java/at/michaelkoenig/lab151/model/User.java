@@ -15,15 +15,15 @@ import java.util.List;
 @Entity(name = "user")
 public class User implements Serializable {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Integer id;
 
-    @Column(name = "user_name", unique = true)
+    @Column(name = "user_name", unique = true, nullable = false)
     @Size(min = 3)
     private String name;
 
-    @Column(name = "user_birthday")
+    @Column(name = "user_birthday", nullable = false)
     @PastOrPresent
     private LocalDate birthday;
 
@@ -55,11 +55,11 @@ public class User implements Serializable {
         this.birthday = birthday;
     }
 
-    public List<Post> getUsers() {
-        return users;
+    public List<Post> getPosts() {
+        return posts;
     }
 
-    public void setUsers(List<Post> users) {
-        this.users = users;
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }
